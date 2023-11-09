@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whats_app_clone/common/utils/colors.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -6,19 +7,23 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFF111B21),
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Coloors.backgroundDark,
       body: Column(
         children: [
-          const SizedBox(
-            height: 55,
-          ),
+          // const SizedBox(
+          //   height: 55,
+          // ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: Image.asset(
-                'assets/images/circle.png',
-                color: const Color(0xFF00A884),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                child: Image.asset(
+                  'assets/images/circle.png',
+                  color: Coloors.greenDark,
+                ),
               ),
             ),
           ),
@@ -45,15 +50,13 @@ class WelcomePage extends StatelessWidget {
                   text: const TextSpan(
                     text: 'Read our',
                     style: TextStyle(
-                      color: Color(0xFF8696A0),
+                      color: Coloors.greyDark,
                       height: 1.5,
                     ),
                     children: [
                       TextSpan(
                         text: ' Privecy Policy',
-                        style: TextStyle(
-                          color: Color(0xFF53BDEB),
-                        ),
+                        style: TextStyle(color: Coloors.blueDark),
                       ),
                       TextSpan(
                         text: ' Tap " Agree and Continue " to accet the ',
@@ -61,7 +64,7 @@ class WelcomePage extends StatelessWidget {
                       TextSpan(
                         text: ' Term Of Services',
                         style: TextStyle(
-                          color: Color(0xFF53BDEB),
+                          color: Coloors.blueDark,
                         ),
                       ),
                     ],
@@ -77,8 +80,8 @@ class WelcomePage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF00A884),
-                    foregroundColor: const Color(0xFF111B21),
+                    backgroundColor: Coloors.greenDark,
+                    foregroundColor: Coloors.backgroundDark,
                     splashFactory: NoSplash.splashFactory,
                     elevation: 0,
                     shadowColor: Colors.transparent,
@@ -104,18 +107,23 @@ class WelcomePage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.language,
-                          color: Color(0xFF00A884),
+                          color: Coloors.greenDark,
                         ),
                         SizedBox(
                           width: 10,
                         ),
-                        Text('English'),
+                        Text(
+                          'English',
+                          style: TextStyle(
+                            color: Coloors.greenDark,
+                          ),
+                        ),
                         SizedBox(
                           width: 10,
                         ),
                         Icon(
                           Icons.keyboard_arrow_down,
-                          color: Color(0xFF00A884),
+                          color: Coloors.greenDark,
                         ),
                       ],
                     ),
