@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:whats_app_clone/common/theme/dark_theme.dart';
+import 'package:whats_app_clone/common/theme/light_theme.dart';
 import 'package:whats_app_clone/feature/welcome/pages/welcome_page.dart';
 
 void main() {
@@ -13,7 +15,9 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'What\'sApp',
-      theme: ThemeData.dark(),
+      theme: lightTheme(),
+      darkTheme: darkTheme(),
+      themeMode: ThemeMode.system,
       home: const WelcomePage(),
     );
   }
