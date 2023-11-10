@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../common/utils/colors.dart';
+import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
 
 class PrivacyAndTerms extends StatelessWidget {
   const PrivacyAndTerms({super.key});
@@ -11,24 +10,26 @@ class PrivacyAndTerms extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 22),
       child: RichText(
         textAlign: TextAlign.center,
-        text: const TextSpan(
+        text: TextSpan(
           text: 'Read our',
           style: TextStyle(
-            color: Coloors.greyDark,
+            color: context.theme.greyColor,
             height: 1.5,
           ),
           children: [
             TextSpan(
               text: ' Privecy Policy',
-              style: TextStyle(color: Coloors.blueDark),
+              style: TextStyle(
+                color: context.theme.blueColor,
+              ),
             ),
-            TextSpan(
+            const TextSpan(
               text: ' Tap " Agree and Continue " to accet the ',
             ),
             TextSpan(
               text: ' Term Of Services',
               style: TextStyle(
-                color: Coloors.blueDark,
+                color: context.theme.blueColor,
               ),
             ),
           ],
