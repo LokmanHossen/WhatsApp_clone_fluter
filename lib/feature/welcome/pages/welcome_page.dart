@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whats_app_clone/common/utils/colors.dart';
+import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
 
 import '../../../common/widgets/custom_elevated_button.dart';
 import '../widgets/language_button.dart';
@@ -26,7 +26,7 @@ class WelcomePage extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 child: Image.asset(
                   'assets/images/circle.png',
-                  color: Coloors.greenDark,
+                  color: context.theme.circleImageColor,
                 ),
               ),
             ),
