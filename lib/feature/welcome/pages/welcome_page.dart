@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:whats_app_clone/common/utils/colors.dart';
 
+import '../../../common/widgets/custom_elevated_button.dart';
+import '../widgets/language_button.dart';
 import '../widgets/privecy_and_terms.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -10,7 +12,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Coloors.backgroundDark,
+      // backgroundColor: Coloors.backgroundDark,
       body: Column(
         children: [
           // const SizedBox(
@@ -46,62 +48,14 @@ class WelcomePage extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              SizedBox(
-                height: 42,
-                width: MediaQuery.of(context).size.width - 100,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Coloors.greenDark,
-                    foregroundColor: Coloors.backgroundDark,
-                    splashFactory: NoSplash.splashFactory,
-                    elevation: 0,
-                    shadowColor: Colors.transparent,
-                  ),
-                  child: const Text('AGREE AND COTINUE'),
-                ),
+              CustomElevatedButton(
+                onPressed: () {},
+                text: 'AGREE AND CONTINUE',
               ),
               const SizedBox(
                 height: 40,
               ),
-              Material(
-                color: const Color(0xFF182229),
-                borderRadius: BorderRadius.circular(50),
-                child: InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(20),
-                  splashFactory: NoSplash.splashFactory,
-                  highlightColor: const Color(0xFF09141A),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.language,
-                          color: Coloors.greenDark,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'English',
-                          style: TextStyle(
-                            color: Coloors.greenDark,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down,
-                          color: Coloors.greenDark,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              )
+              const LanguageButton()
             ],
           )),
         ],
