@@ -71,6 +71,14 @@ class LanguageButton extends StatelessWidget {
                   groupValue: false,
                   onChanged: (value) {},
                   activeColor: Coloors.greenDark,
+                  title: const Text('বাংলা'),
+                  subtitle: const Text("(বাংলাদেশ)"),
+                ),
+                RadioListTile(
+                  value: true,
+                  groupValue: false,
+                  onChanged: (value) {},
+                  activeColor: Coloors.greenDark,
                   title: const Text('አማርኛ'),
                   subtitle: const Text("(Amharic)"),
                 ),
@@ -89,7 +97,7 @@ class LanguageButton extends StatelessWidget {
         onTap: () => showBottomSheet(context),
         borderRadius: BorderRadius.circular(20),
         splashFactory: NoSplash.splashFactory,
-        highlightColor: context.theme.langHighilightColor,
+        highlightColor: context.theme.langBtnHighilightColor,
         child: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Row(
