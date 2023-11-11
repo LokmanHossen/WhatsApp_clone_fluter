@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whats_app_clone/common/theme/dark_theme.dart';
 import 'package:whats_app_clone/common/theme/light_theme.dart';
-import 'package:whats_app_clone/feature/welcome/pages/welcome_page.dart';
+import 'package:whats_app_clone/feature/auth/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'What\'sApp',
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
-      home: const WelcomePage(),
+      home: const LoginPage(),
     );
   }
 }
