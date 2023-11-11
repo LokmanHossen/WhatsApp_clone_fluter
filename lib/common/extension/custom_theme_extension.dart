@@ -13,7 +13,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     greyColor: Coloors.greyLight,
     blueColor: Coloors.blueLight,
     langButtonColor: Color(0xFFF7F8FA),
-    langHighilightColor: Color(0xFFE8E8ED),
+    langBtnHighilightColor: Color(0xFFE8E8ED),
+    authAppbarTextColor: Coloors.greenLight,
   );
 
   static const darkMode = CustomThemeExtension(
@@ -21,21 +22,24 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     greyColor: Coloors.greyDark,
     blueColor: Coloors.blueDark,
     langButtonColor: Color(0xFF182229),
-    langHighilightColor: Color(0xFF09141A),
+    langBtnHighilightColor: Color(0xFF09141A),
+    authAppbarTextColor: Color(0xFFE9EDEF),
   );
 
   final Color? circleImageColor;
   final Color? greyColor;
   final Color? blueColor;
   final Color? langButtonColor;
-  final Color? langHighilightColor;
+  final Color? langBtnHighilightColor;
+  final Color? authAppbarTextColor;
 
   const CustomThemeExtension({
     this.circleImageColor,
     this.greyColor,
     this.blueColor,
     this.langButtonColor,
-    this.langHighilightColor,
+    this.langBtnHighilightColor,
+    this.authAppbarTextColor,
   });
 
   @override
@@ -44,14 +48,16 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     Color? greyColor,
     Color? blueColor,
     Color? langButtonColor,
-    Color? langHighilightColor,
+    Color? langBtnHighilightColor,
+    Color? authAppbarTextColor,
   }) {
     return CustomThemeExtension(
       circleImageColor: circleImageColor ?? this.circleImageColor,
       greyColor: greyColor ?? this.greyColor,
       blueColor: blueColor ?? this.blueColor,
       langButtonColor: langButtonColor ?? this.langButtonColor,
-      langHighilightColor: langHighilightColor ?? this.langHighilightColor,
+      authAppbarTextColor: authAppbarTextColor ?? this.authAppbarTextColor,
+      langBtnHighilightColor: langBtnHighilightColor ?? this.langBtnHighilightColor,
     );
   }
 
@@ -64,8 +70,10 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       greyColor: Color.lerp(greyColor, other.greyColor, t),
       blueColor: Color.lerp(blueColor, other.blueColor, t),
       langButtonColor: Color.lerp(langButtonColor, other.langButtonColor, t),
-      langHighilightColor:
-          Color.lerp(langHighilightColor, other.langHighilightColor, t),
+      authAppbarTextColor:
+          Color.lerp(authAppbarTextColor, other.authAppbarTextColor, t),
+      langBtnHighilightColor:
+          Color.lerp(langBtnHighilightColor, other.langBtnHighilightColor, t),
     );
   }
 }
