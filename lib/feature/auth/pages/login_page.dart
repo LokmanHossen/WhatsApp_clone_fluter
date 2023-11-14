@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
   sendCodeToPhone() {
     final phone = phoneNumberController.text;
-    final name = countryCodeController;
+    final name = countryCodeController.text;
 
     if (phone.isEmpty) {
       return showAlertDialog(
@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
       return showAlertDialog(
         context: context,
         message:
-            "The Phone number you entered is too short for the country : $name.\n\nInclude your are a code you have't",
+            "The Phone number you entered is too short for the country : $name \n\nInclude your are a code you have't",
       );
     } else if (phone.length > 10) {
       return showAlertDialog(
