@@ -1,6 +1,7 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
+import 'package:whats_app_clone/common/helper/show_alert_dialog.dart';
 import 'package:whats_app_clone/common/utils/colors.dart';
 import 'package:whats_app_clone/common/widgets/custom_elevated_button.dart';
 import 'package:whats_app_clone/common/widgets/custom_icon_button.dart';
@@ -17,6 +18,30 @@ class _LoginPageState extends State<LoginPage> {
   late TextEditingController countryNameController;
   late TextEditingController countryCodeController;
   late TextEditingController phoneNumberController;
+
+  sendCodeToPhone() {
+    final phone = phoneNumberController.text;
+    final name = countryCodeController;
+
+    if (phone.isEmpty) {
+      return showAlertDialog(
+        context: context,
+        message: 'Please enter your phone number',
+      );
+    } else if (phone.length < 9) {
+      return showAlertDialog(
+        context: context,
+        message:
+            "The Phone number you entered is too short for the country : $name.\n\nInclude your are a code you have't",
+      );
+    } else if (phone.length > 10) {
+      return showAlertDialog(
+        context: context,
+        message:
+            'The phone number you entered is too long for this country : $name',
+      );
+    }
+  }
 
   showCountryCodePicker() {
     showCountryPicker(
@@ -164,7 +189,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: CustomElevatedButton(
-        onPressed: () {},
+        onPressed: sendCodeToPhone,
         text: 'NEXT',
         buttonWidth: 90,
       ),
