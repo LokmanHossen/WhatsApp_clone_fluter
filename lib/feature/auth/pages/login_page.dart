@@ -1,7 +1,9 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
 import 'package:whats_app_clone/common/utils/colors.dart';
 import 'package:whats_app_clone/common/widgets/custom_elevated_button.dart';
+import 'package:whats_app_clone/common/widgets/custom_icon_button.dart';
 import 'package:whats_app_clone/feature/auth/widgets/custom_text_field.dart';
 
 class LoginPage extends StatefulWidget {
@@ -16,9 +18,47 @@ class _LoginPageState extends State<LoginPage> {
   late TextEditingController countryCodeController;
   late TextEditingController phoneNumberController;
 
+  showCountryCodePicker() {
+    showCountryPicker(
+      context: context,
+      showPhoneCode: true,
+      favorite: ['BD'],
+      countryListTheme: CountryListThemeData(
+        bottomSheetHeight: 600,
+        // ignore: deprecated_member_use
+        backgroundColor: Theme.of(context).backgroundColor,
+        flagSize: 22,
+        borderRadius: BorderRadius.circular(20),
+        textStyle: TextStyle(color: context.theme.greyColor),
+        inputDecoration: InputDecoration(
+          labelStyle: TextStyle(color: context.theme.greyColor),
+          prefix: const Icon(
+            Icons.language,
+            color: Coloors.greenDark,
+          ),
+          hintText: 'Search country code or name',
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: context.theme.greyColor!.withOpacity(0.2),
+            ),
+          ),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Coloors.greenDark,
+            ),
+          ),
+        ),
+      ),
+      onSelect: (country) {
+        countryNameController.text = country.name;
+        countryCodeController.text = country.countryCode;
+      },
+    );
+  }
+
   @override
   void initState() {
-    countryNameController = TextEditingController(text: 'Ethiopia');
+    countryNameController = TextEditingController(text: 'Bangladesh');
     countryCodeController = TextEditingController(text: '880');
     phoneNumberController = TextEditingController();
     super.initState();
@@ -46,17 +86,9 @@ class _LoginPageState extends State<LoginPage> {
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-            onPressed: () {},
-            splashColor: Colors.transparent,
-            splashRadius: 22,
-            iconSize: 22,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 40),
-            icon: Icon(
-              Icons.more_vert,
-              color: context.theme.greyColor,
-            ),
+          CustomIconButton(
+            onTap: () {},
+            icon: Icons.more_vert,
           ),
         ],
       ),
@@ -67,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
             child: RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                text: 'WhatsApp will need to verify yyour phone.',
+                text: 'WhatsApp will need to verify your phone.',
                 style: TextStyle(
                   color: context.theme.greyColor,
                   height: 1.5,
@@ -89,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: CustomTextPage(
-              onTap: () {},
+              onTap: showCountryCodePicker,
               controller: countryNameController,
               readOnly: true,
               suffixIcon:
@@ -104,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: 60,
                   child: CustomTextPage(
+                    onTap: showCountryCodePicker,
                     controller: countryCodeController,
                     prefixText: '+',
                     readOnly: true,
