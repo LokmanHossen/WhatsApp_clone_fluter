@@ -19,7 +19,6 @@ ThemeData darkTheme() {
         statusBarIconBrightness: Brightness.light,
       ),
     ),
-
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: Coloors.greenDark,
@@ -36,6 +35,12 @@ ThemeData darkTheme() {
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(30),
         ),
+      ),
+    ),
+    dialogBackgroundColor: Coloors.greyBackground,
+    dialogTheme: DialogTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
       ),
     ),
   );
