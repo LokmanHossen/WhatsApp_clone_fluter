@@ -20,7 +20,7 @@ showAlertDialog({
         contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).pop(),
               child: Text(
                 btnText ?? "OK",
                 style: TextStyle(
