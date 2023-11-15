@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "543630875956",
+    "project_id": "whatsapp-messenger-12afe",
+    "storage_bucket": "whatsapp-messenger-12afe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543630875956:android:a94bef3f43d36db71b9961",
+        "android_client_info": {
+          "package_name": "com.example.whats_app_clone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYB8StEmGtSZauWpVaTMZVcHTGcIUs1oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
