@@ -9,13 +9,14 @@ extension ExtendedTheme on BuildContext {
 
 class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   static const lightMode = CustomThemeExtension(
-    circleImageColor: Color(0xFF25D366),
-    greyColor: Coloors.greyLight,
-    blueColor: Coloors.blueLight,
-    langButtonColor: Color(0xFFF7F8FA),
-    langBtnHighilightColor: Color(0xFFE8E8ED),
-    authAppbarTextColor: Coloors.greenLight,
-  );
+      circleImageColor: Color(0xFF25D366),
+      greyColor: Coloors.greyLight,
+      blueColor: Coloors.blueLight,
+      langButtonColor: Color(0xFFF7F8FA),
+      langBtnHighilightColor: Color(0xFFE8E8ED),
+      authAppbarTextColor: Coloors.greenLight,
+      photoIconBgColor: Color(0xFFF0F2F3),
+      photoIconColor: Color(0xFF9DAAB3));
 
   static const darkMode = CustomThemeExtension(
     circleImageColor: Coloors.greenDark,
@@ -24,6 +25,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     langButtonColor: Color(0xFF182229),
     langBtnHighilightColor: Color(0xFF09141A),
     authAppbarTextColor: Color(0xFFE9EDEF),
+    photoIconBgColor: Color(0xFF283339),
+    photoIconColor: Color(0xFF61717B),
   );
 
   final Color? circleImageColor;
@@ -32,6 +35,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   final Color? langButtonColor;
   final Color? langBtnHighilightColor;
   final Color? authAppbarTextColor;
+  final Color? photoIconBgColor;
+  final Color? photoIconColor;
 
   const CustomThemeExtension({
     this.circleImageColor,
@@ -40,6 +45,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     this.langButtonColor,
     this.langBtnHighilightColor,
     this.authAppbarTextColor,
+    this.photoIconBgColor,
+    this.photoIconColor,
   });
 
   @override
@@ -50,6 +57,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     Color? langButtonColor,
     Color? langBtnHighilightColor,
     Color? authAppbarTextColor,
+    Color? photoIconBgColor,
+    Color? photoIconColor,
   }) {
     return CustomThemeExtension(
       circleImageColor: circleImageColor ?? this.circleImageColor,
@@ -57,7 +66,10 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       blueColor: blueColor ?? this.blueColor,
       langButtonColor: langButtonColor ?? this.langButtonColor,
       authAppbarTextColor: authAppbarTextColor ?? this.authAppbarTextColor,
-      langBtnHighilightColor: langBtnHighilightColor ?? this.langBtnHighilightColor,
+      photoIconBgColor: photoIconBgColor ?? this.photoIconBgColor,
+      photoIconColor: photoIconColor ?? this.photoIconColor,
+      langBtnHighilightColor:
+          langBtnHighilightColor ?? this.langBtnHighilightColor,
     );
   }
 
@@ -72,6 +84,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
       langButtonColor: Color.lerp(langButtonColor, other.langButtonColor, t),
       authAppbarTextColor:
           Color.lerp(authAppbarTextColor, other.authAppbarTextColor, t),
+      photoIconBgColor: Color.lerp(photoIconBgColor, other.photoIconBgColor, t),
+      photoIconColor: Color.lerp(photoIconColor, other.photoIconColor, t),
       langBtnHighilightColor:
           Color.lerp(langBtnHighilightColor, other.langBtnHighilightColor, t),
     );
