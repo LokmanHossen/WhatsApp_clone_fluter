@@ -24,8 +24,8 @@ class Routes {
         final Map args = settings.arguments as Map;
         return MaterialPageRoute(
           builder: (context) => VerificationPage(
+            smsCodeId: args['smsCodeId'],
             phoneNumber: args['phoneNumber'],
-            verificationId: args['verificationId'],
           ),
         );
       case userInfo:
