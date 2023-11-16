@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       // home: const LoginPage(),
-      // home: const VerificationPage(),
+      // home:  VerificationPage(),
       // home: const UserInfoPage(),
       home: const WelcomePage(),
       onGenerateRoute: Routes.onGenerateRoute,
