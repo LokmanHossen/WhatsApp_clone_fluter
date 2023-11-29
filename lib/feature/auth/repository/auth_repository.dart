@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whats_app_clone/common/helper/show_alert_dialog.dart';
+import 'package:whats_app_clone/common/models/user_model.dart';
 import 'package:whats_app_clone/common/routes/routes.dart';
+import 'package:whats_app_clone/feature/auth/repository/firebase_storage_repository.dart';
 
 final authRepositoryProvider = Provider(
   (ref) {
@@ -22,6 +25,38 @@ class AuthRepository {
     required this.auth,
     required this.firestore,
   });
+
+  void saveUserInfoToFirestore({
+    required String username,
+    required var profileImage,
+    required ProviderRef ref,
+    required BuildContext context,
+    required bool mounted,
+  }) async {
+    try {
+      String uid = auth.currentUser!.uid;
+      String profileImageUrl = "";
+      if (profileImage != null) {
+        profileImageUrl = await ref
+            .read(firebaseStorageRepositoryProvider)
+            .storeFileToFirebase('profileImage/$uid', profileImage);
+      }
+
+      UserModel user = UserModel(
+        username: username,
+        uid: uid,
+        profileImageUrl: profileImageUrl,
+        active: true,
+        phoneNumber: auth.currentUser!.phoneNumber!,
+        groupId: [],
+      );
+      await firestore.collection('users').doc(uid).set(user.toMap());
+      if (!mounted) return;
+  
+  } catch (e) {
+      showAlertDialog(context: context, message: e.toString());
+    }
+  }
 
   void verifySmsCode({
     required BuildContext context,
