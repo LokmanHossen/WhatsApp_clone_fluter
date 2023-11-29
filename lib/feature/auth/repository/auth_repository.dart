@@ -52,8 +52,12 @@ class AuthRepository {
       );
       await firestore.collection('users').doc(uid).set(user.toMap());
       if (!mounted) return;
-  
-  } catch (e) {
+
+      Navigator.of(context).pushNamedAndRemoveUntil(
+        Routes.home,
+        (route) => false,
+      );
+    } catch (e) {
       showAlertDialog(context: context, message: e.toString());
     }
   }
