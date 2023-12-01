@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whats_app_clone/common/routes/routes.dart';
 import 'package:whats_app_clone/common/theme/dark_theme.dart';
 import 'package:whats_app_clone/common/theme/light_theme.dart';
-import 'package:whats_app_clone/feature/auth/pages/user_info_page.dart';
+import 'package:whats_app_clone/feature/auth/controller/auth_controller.dart';
+import 'package:whats_app_clone/feature/home/pages/home_page.dart';
+import 'package:whats_app_clone/feature/welcome/pages/welcome_page.dart';
 import 'package:whats_app_clone/firebase_options.dart';
 
 void main() async {
@@ -19,21 +21,36 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'What\'sApp',
+      title: 'WhatsApp me',
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       // home: const LoginPage(),
       // home:  VerificationPage(),
-      home: const UserInfoPage(),
+      // home: const UserInfoPage(),
       // home: const WelcomePage(),
+      home: ref.watch(userInfoAuthProvider).when(
+            data: (user) {
+              // FlutterNativeSplash.remove();
+              if (user == null) return const WelcomePage();
+              return const HomePage();
+            },
+            error: (error, trace) {
+              return const Scaffold(
+                body: Center(
+                  child: Text('Something wrong happened'),
+                ),
+              );
+            },
+            loading: () => const SizedBox(),
+          ),
       onGenerateRoute: Routes.onGenerateRoute,
     );
   }
