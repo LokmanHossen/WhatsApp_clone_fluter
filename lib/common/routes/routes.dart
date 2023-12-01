@@ -31,11 +31,14 @@ class Routes {
           ),
         );
       case userInfo:
+        final String? profileImageUrl = settings.arguments as String?;
         return MaterialPageRoute(
-          builder: (context) => const UserInfoPage(),
+          builder: (context) => UserInfoPage(
+            profileImageUrl: profileImageUrl,
+          ),
         );
 
-        case home:
+      case home:
         return MaterialPageRoute(
           builder: (context) => const HomePage(),
         );
