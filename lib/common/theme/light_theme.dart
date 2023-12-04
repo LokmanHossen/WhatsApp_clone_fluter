@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
-
 import 'package:whats_app_clone/common/utils/colors.dart';
 
 ThemeData lightTheme() {
@@ -14,11 +13,29 @@ ThemeData lightTheme() {
       CustomThemeExtension.lightMode,
     ],
     appBarTheme: const AppBarTheme(
-      titleTextStyle: TextStyle(fontSize: 18),
+      backgroundColor: Coloors.greenLight,
+      titleTextStyle: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+      ),
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
+      iconTheme: IconThemeData(
+        color: Colors.white,
+      ),
+    ),
+
+    tabBarTheme: const TabBarTheme(
+      indicator: UnderlineTabIndicator(
+        borderSide: BorderSide(
+          color: Colors.white,
+          width: 2,
+        ),
+      ),
+      unselectedLabelColor: Color(0xFFB3D9D2),
+      labelColor: Colors.white,
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
