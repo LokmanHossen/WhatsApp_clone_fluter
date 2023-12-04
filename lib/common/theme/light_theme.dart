@@ -26,7 +26,6 @@ ThemeData lightTheme() {
         color: Colors.white,
       ),
     ),
-
     tabBarTheme: const TabBarTheme(
       indicator: UnderlineTabIndicator(
         borderSide: BorderSide(
@@ -37,7 +36,6 @@ ThemeData lightTheme() {
       unselectedLabelColor: Color(0xFFB3D9D2),
       labelColor: Colors.white,
     ),
-
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: Coloors.greenLight,
@@ -61,6 +59,10 @@ ThemeData lightTheme() {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Coloors.greenDark,
+      foregroundColor: Colors.white,
     ),
   );
 }

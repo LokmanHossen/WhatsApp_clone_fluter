@@ -63,5 +63,9 @@ ThemeData darkTheme() {
         borderRadius: BorderRadius.circular(20),
       ),
     ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Coloors.greenDark,
+      foregroundColor: Colors.white,
+    ),
   );
 }
