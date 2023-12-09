@@ -32,10 +32,8 @@ class MyApp extends ConsumerWidget {
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
-      // home: const LoginPage(),
-      // home:  VerificationPage(),
-      // home: const UserInfoPage(),
-      // home: const WelcomePage(),
+
+      // home: const ContactPage(),
       home: ref.watch(userInfoAuthProvider).when(
             data: (user) {
               // FlutterNativeSplash.remove();
