@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
 import 'package:whats_app_clone/common/models/user_model.dart';
+import 'package:whats_app_clone/common/routes/routes.dart';
 import 'package:whats_app_clone/common/utils/colors.dart';
 import 'package:whats_app_clone/common/widgets/custom_icon_button.dart';
 import 'package:whats_app_clone/feature/contact/controllers/contacts_controller.dart';
@@ -96,8 +97,13 @@ class ContactPage extends ConsumerWidget {
                           ],
                         ),
                       ContactCard(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            Routes.chat,
+                            arguments: firebaseContacts,
+                          );
+                        },
                         contactSource: firebaseContacts,
-                        onTap: () {},
                       ),
                     ],
                   )
