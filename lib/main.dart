@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whats_app_clone/common/routes/routes.dart';
 import 'package:whats_app_clone/common/theme/dark_theme.dart';
@@ -10,6 +11,8 @@ import 'package:whats_app_clone/feature/welcome/pages/welcome_page.dart';
 import 'package:whats_app_clone/firebase_options.dart';
 
 void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -32,11 +35,9 @@ class MyApp extends ConsumerWidget {
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
-
-      // home: const ContactPage(),
       home: ref.watch(userInfoAuthProvider).when(
             data: (user) {
-              // FlutterNativeSplash.remove();
+              FlutterNativeSplash.remove();
               if (user == null) return const WelcomePage();
               return const HomePage();
             },
