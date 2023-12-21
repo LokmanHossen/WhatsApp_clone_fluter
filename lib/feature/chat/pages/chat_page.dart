@@ -7,6 +7,21 @@ class ChatPage extends StatelessWidget {
 
   final UserModel user;
 
+  void lastSeenMessage(lastSeen) {
+    DateTime now = DateTime.now();
+    Duration differenceDuration = now.difference(
+      DateTime.fromMillisecondsSinceEpoch(lastSeen),
+    );
+
+    String finalMessage = differenceDuration.inSeconds > 59
+        ? differenceDuration.inMinutes > 59
+            ? differenceDuration.inDays > 23
+                ? "${differenceDuration.inDays} ${differenceDuration.inDays == 1 ? 'day' : 'days'}"
+                : "${differenceDuration.inHours} ${differenceDuration.inHours == 1 ? 'hour' : 'hours'}"
+            : "${differenceDuration.inMinutes} ${differenceDuration.inMinutes == 1 ? 'minute' : 'minutes'}"
+        : 'few moment'; 
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

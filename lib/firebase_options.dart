@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:543630875956:android:a94bef3f43d36db71b9961',
     messagingSenderId: '543630875956',
     projectId: 'whatsapp-messenger-12afe',
+    databaseURL: 'https://whatsapp-messenger-12afe-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'whatsapp-messenger-12afe.appspot.com',
   );
 
@@ -62,6 +63,7 @@ class DefaultFirebaseOptions {
     appId: '1:543630875956:ios:97f549f195e09e521b9961',
     messagingSenderId: '543630875956',
     projectId: 'whatsapp-messenger-12afe',
+    databaseURL: 'https://whatsapp-messenger-12afe-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'whatsapp-messenger-12afe.appspot.com',
     iosBundleId: 'com.example.whatsAppClone',
   );

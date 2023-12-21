@@ -32,7 +32,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'WhatsApp me',
-      theme: lightTheme(),
+      theme: lightTheme(), 
       darkTheme: darkTheme(),
       themeMode: ThemeMode.system,
       home: ref.watch(userInfoAuthProvider).when(

@@ -45,8 +45,11 @@ dependencies:
   photo_manager: ^2.6.0
   flutter_contacts: ^1.1.7+1
   url_launcher: ^6.1.14
-  cloud_firestore: ^4.13.5
   firebase_database: ^10.3.8
+  cloud_firestore: ^4.13.6
+
+  
+
  
 
 
