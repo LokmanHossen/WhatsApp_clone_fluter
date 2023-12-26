@@ -5,7 +5,7 @@ import 'package:whats_app_clone/common/helper/last_seen_message.dart';
 import 'package:whats_app_clone/common/models/user_model.dart';
 import 'package:whats_app_clone/common/utils/colors.dart';
 import 'package:whats_app_clone/common/widgets/custom_icon_button.dart';
-import 'package:whats_app_clone/feature/chat/widgets/custom_list_title.dart';
+import 'package:whats_app_clone/feature/chat/widgets/custom_list_tile.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key, required this.user});
@@ -70,7 +70,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                CustomListTitle(
+                CustomListTile(
                   title: 'Mute notification',
                   leading: Icons.notifications,
                   trailing: Switch(
@@ -79,12 +79,12 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const CustomListTitle(
+                const CustomListTile(
                   title: 'Custom notification',
                   leading: Icons.music_note,
                 ),
                 const SizedBox(height: 10),
-                CustomListTitle(
+                CustomListTile(
                   title: 'Media visibility',
                   leading: Icons.photo,
                   trailing: Switch(
@@ -93,14 +93,14 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const CustomListTitle(
+                const CustomListTile(
                   title: 'Encryption',
                   subTitle:
                       'Messages and call are end-to-end encrypted, Tap to verify.',
                   leading: Icons.lock,
                 ),
                 const SizedBox(height: 5),
-                const CustomListTitle(
+                const CustomListTile(
                   title: 'Disappering Messages',
                   subTitle: 'Off',
                   leading: Icons.timer,

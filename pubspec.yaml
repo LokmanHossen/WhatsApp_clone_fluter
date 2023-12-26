@@ -46,6 +46,8 @@ dependencies:
   flutter_contacts: ^1.1.7+1
   url_launcher: ^6.1.14
   firebase_database: ^10.3.8
+  page_transition: ^2.1.0
+  cached_network_image: ^3.3.0
   cloud_firestore: ^4.13.6
 
   
