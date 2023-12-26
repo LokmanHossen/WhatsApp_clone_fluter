@@ -38,7 +38,6 @@ ThemeData darkTheme() {
       unselectedLabelColor: Coloors.greyDark,
       labelColor: Coloors.greenDark,
     ),
-
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: Coloors.greenDark,
@@ -66,6 +65,14 @@ ThemeData darkTheme() {
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Coloors.greenDark,
       foregroundColor: Colors.white,
+    ),
+    listTileTheme: const ListTileThemeData(
+      iconColor: Coloors.greyDark,
+      tileColor: Coloors.backgroundDark,
+    ),
+    switchTheme: const SwitchThemeData(
+      thumbColor: MaterialStatePropertyAll(Coloors.greenDark),
+      trackColor: MaterialStatePropertyAll(Color(0xFF344047)),
     ),
   );
 }
