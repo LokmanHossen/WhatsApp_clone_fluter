@@ -176,10 +176,10 @@ class ProfilePage extends StatelessWidget {
 class SliverPersistentDelegate extends SliverPersistentHeaderDelegate {
   final UserModel user;
 
-  final double maxHeaderHeight = 180;
+  final double maxHeaderHeight = 220;
   final double minHeaderHeight = kToolbarHeight + 30;
-  final double maxImageSize = 110;
-  final double minImageSize = 40;
+  final double maxImageSize = 135;
+  final double minImageSize = 38;
 
   SliverPersistentDelegate(this.user);
   @override
