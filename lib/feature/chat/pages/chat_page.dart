@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
 import 'package:whats_app_clone/common/helper/last_seen_message.dart';
 import 'package:whats_app_clone/common/models/user_model.dart';
 import 'package:whats_app_clone/common/routes/routes.dart';
 import 'package:whats_app_clone/common/widgets/custom_icon_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:whats_app_clone/feature/chat/widgets/chat_text_field.dart';
 
 import '../../auth/controller/auth_controller.dart';
 
@@ -109,6 +111,25 @@ class ChatPage extends ConsumerWidget {
             icon: Icons.more_vert,
             iconColor: Colors.white,
           ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          Image(
+            height: double.maxFinite,
+            width: double.maxFinite,
+            image: const AssetImage('assets/images/doodle_bg.png'),
+            fit: BoxFit.cover,
+            color: context.theme.photoIconBgColor,
+          ),
+          Column(
+            children: [
+              Expanded(
+                child: Container( ),
+              ),
+              ChatTextField(receiverId: user.uid)
+            ],
+          )
         ],
       ),
     );
