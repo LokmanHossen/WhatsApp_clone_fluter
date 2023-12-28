@@ -18,18 +18,18 @@ class LastMessageModel {
       'username': username,
       'profileImageUrl': profileImageUrl,
       'contactId': contactId,
-      'timesent': timeSent,
+      'timesent': timeSent.millisecondsSinceEpoch,
       'lastMessage': lastMessage,
     };
   }
 
   factory LastMessageModel.fromMap(Map<String, dynamic> map) {
     return LastMessageModel(
-      username: map['username'] ?? '',
-      profileImageUrl: map['profileImageUrl'] ?? '',
-      contactId: map['contactId'] ?? '',
+      username: map['username'] ?? "",
+      profileImageUrl: map['profileImageUrl'] ?? "",
+      contactId: map['contactId'] ?? "",
       timeSent: DateTime.fromMillisecondsSinceEpoch(map['timesent']),
-      lastMessage: map['lastMessage'] ?? '',
+      lastMessage: map['lastMessage'] ?? "",
     );
   }
 }
