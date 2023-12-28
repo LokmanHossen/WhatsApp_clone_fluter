@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
 import 'package:whats_app_clone/common/utils/colors.dart';
 import 'package:whats_app_clone/common/widgets/custom_icon_button.dart';
+import 'package:whats_app_clone/feature/chat/controllers/chat_controller.dart';
 
-class ChatTextField extends StatefulWidget {
+class ChatTextField extends ConsumerStatefulWidget {
   const ChatTextField({super.key, required this.receiverId});
   final String receiverId;
 
   @override
-  State<ChatTextField> createState() => _ChatTextFieldState();
+  ConsumerState<ChatTextField> createState() => _ChatTextFieldState();
 }
 
-class _ChatTextFieldState extends State<ChatTextField> {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+class _ChatTextFieldState extends ConsumerState<ChatTextField> {
   late TextEditingController messageController;
 
   bool isMessageIconEnabled = false;
+
+  void sendTextMessage() async {
+    if (isMessageIconEnabled) {
+      ref.read(chatControllerProvider).sendTextMessage(
+            context: context,
+            textMessage: messageController.text,
+            receiverId: widget.receiverId,
+          );
+      messageController.clear();
+    }
+  }
 
   @override
   void initState() {
@@ -86,7 +98,7 @@ class _ChatTextFieldState extends State<ChatTextField> {
           ),
           const SizedBox(width: 5),
           CustomIconButton(
-            onTap: () {},
+            onTap: sendTextMessage ,
             icon: isMessageIconEnabled
                 ? Icons.send_outlined
                 : Icons.mic_none_outlined,
