@@ -25,9 +25,9 @@ class MessageModel {
       receiverId: map['receiverId'],
       textMessage: map['textMessage'],
       type: (map['type'] as String).toEnum(),
-      timeSent: DateTime.parse(map["timesent"]),
+      timeSent: DateTime.fromMillisecondsSinceEpoch(map["timeSent"]),
       messageId: map["messageId"],
-      isSeen: map["isSeen"].toLowerCase() == 'true',
+      isSeen: map["isSeen"] ?? false,
     );
   }
   Map<String, dynamic> toMap() {
@@ -36,7 +36,7 @@ class MessageModel {
       "receiverId": receiverId,
       "textMessage": textMessage,
       "type": type.type,
-      "timesent": timeSent.toIso8601String(),
+      "timesent": timeSent.millisecondsSinceEpoch,
       "messageId": messageId,
       "isSeen": isSeen,
     };
