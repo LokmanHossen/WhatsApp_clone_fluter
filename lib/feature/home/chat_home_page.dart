@@ -29,7 +29,7 @@ class ChatHomePage extends ConsumerWidget {
             );
           }
           return ListView.builder(
-            itemCount: snapshot.data == null ? 0 : snapshot.data!.length,
+            itemCount: snapshot.data!.length,
             // snapshot.data!.length,
             // snapshot.data == null ? 0 : snapshot.data!.length,
             shrinkWrap: true,
