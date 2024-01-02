@@ -29,10 +29,11 @@ class ContactRepository {
         for (var contact in allContactsInThePhone) {
           for (var firebaseContactData in userCollecton.docs) {
             var firebaseContact = UserModel.fromMap(firebaseContactData.data());
-            if (contact.phones[0].number.replaceAll(' ', ' ') ==
+            if (contact.phones[0].number.replaceAll(' ', '') ==
                 firebaseContact.phoneNumber) {
               firebaseContacts.add(firebaseContact);
               isContactFound = true;
+              break;
             }
           }
           if (!isContactFound) {
