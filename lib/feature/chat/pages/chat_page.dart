@@ -6,8 +6,11 @@ import 'package:whats_app_clone/common/models/user_model.dart';
 import 'package:whats_app_clone/common/routes/routes.dart';
 import 'package:whats_app_clone/common/widgets/custom_icon_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:whats_app_clone/feature/chat/controllers/chat_controller.dart';
 import 'package:whats_app_clone/feature/chat/widgets/chat_text_field.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:custom_clippers/custom_clippers.dart';
+import 'package:intl/intl.dart';
 import '../../auth/controller/auth_controller.dart';
 
 class ChatPage extends ConsumerWidget {
@@ -18,6 +21,7 @@ class ChatPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      backgroundColor: context.theme.chatPageBgColor,
       appBar: AppBar(
         leading: InkWell(
           onTap: () {
@@ -74,11 +78,11 @@ class ChatPage extends ConsumerWidget {
                         ),
                       );
                     }
-                    final singleUSerModel = snapshot.data!;
+                    final singleUserModel = snapshot.data!;
                     final lastMessage =
-                        lastSeenMessage(singleUSerModel.lastSeen);
+                        lastSeenMessage(singleUserModel.lastSeen);
                     return Text(
-                      singleUSerModel.active ? "Online" : "$lastMessage ago",
+                      singleUserModel.active ? 'Online' : "$lastMessage ago",
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.white,
@@ -120,12 +124,114 @@ class ChatPage extends ConsumerWidget {
             width: double.maxFinite,
             image: const AssetImage('assets/images/doodle_bg.png'),
             fit: BoxFit.cover,
-            color: context.theme.photoIconBgColor,
+            color: context.theme.chatPageDoodleColor,
           ),
           Column(
             children: [
               Expanded(
-                child: Container( ),
+                // child: Container( ),
+                child: StreamBuilder(
+                  stream: ref
+                      .watch(chatControllerProvider)
+                      .getAllOneToOneMessage(user.uid),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState != ConnectionState.active) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount:
+                            snapshot.data == null ? 0 : snapshot.data!.length,
+                        itemBuilder: (_, index) {
+                          final message = snapshot.data![index];
+                          final isSender = message.senderId ==
+                              FirebaseAuth.instance.currentUser!.uid;
+
+                          final haveNip = (index == 0) ||
+                              (index == snapshot.data!.length - 1 &&
+                                  message.senderId !=
+                                      snapshot.data![index - 1].senderId) ||
+                              (message.senderId !=
+                                      snapshot.data![index - 1].senderId &&
+                                  message.senderId ==
+                                      snapshot.data![index + 1].senderId) ||
+                              (message.senderId !=
+                                      snapshot.data![index - 1].senderId &&
+                                  message.messageId !=
+                                      snapshot.data![index + 1].senderId);
+                          return Container(
+                            alignment: isSender
+                                ? Alignment.centerRight
+                                : Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                              top: 4,
+                              bottom: 4,
+                              left: isSender
+                                  ? 80
+                                  : haveNip
+                                      ? 10
+                                      : 15,
+                              right: isSender
+                                  ? haveNip
+                                      ? 10
+                                      : 15
+                                  : 80,
+                            ),
+                            child: ClipPath(
+                              clipper: haveNip
+                                  ? UpperNipMessageClipperTwo(
+                                      isSender
+                                          ? MessageType.send
+                                          : MessageType.receive,
+                                      nipWidth: 8,
+                                      nipHeight: 10,
+                                      bubbleRadius: haveNip ? 12 : 0,
+                                    )
+                                  : null,
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                  top: 8,
+                                  bottom: 8,
+                                  left: isSender ? 10 : 15,
+                                  right: isSender ? 15 : 10,
+                                ),
+                                decoration: BoxDecoration(
+                                    color: isSender
+                                        ? context.theme.senderChatCardBg
+                                        : context.theme.receiverChatCardBg,
+                                    borderRadius: haveNip
+                                        ? null
+                                        : BorderRadius.circular(12),
+                                    boxShadow: const [
+                                      BoxShadow(color: Colors.black38),
+                                    ]),
+                                child: Stack(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 5),
+                                      child: Text(
+                                        "${message.textMessage}             ",
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        child: Text(
+                                      DateFormat.Hm().format(message.timeSent),
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: context.theme.greyColor,
+                                      ),
+                                    ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        });
+                  },
+                ),
               ),
               ChatTextField(receiverId: user.uid)
             ],
