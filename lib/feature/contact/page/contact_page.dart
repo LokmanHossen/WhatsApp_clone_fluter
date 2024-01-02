@@ -77,7 +77,8 @@ class ContactPage extends ConsumerWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            myListTile(leading: Icons.group, text: 'New group'),
+                            myListTile(leading: Icons.group, text: 'new group'),
+                            // myListTile(leading: Icons.group, text: 'New group'),
                             myListTile(
                                 leading: Icons.contacts,
                                 text: 'New contact',
