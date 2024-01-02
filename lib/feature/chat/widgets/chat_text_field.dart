@@ -52,7 +52,7 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
               controller: messageController,
               maxLines: 4,
               minLines: 1,
-              autofocus: true,
+              // autofocus: true,
               onChanged: (value) {
                 value.isEmpty
                     ? setState(() => isMessageIconEnabled = false)
@@ -76,6 +76,7 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
                     child: CustomIconButton(
                       onTap: () {},
                       icon: Icons.emoji_emotions_outlined,
+                      iconColor: Coloors.greyDark,
                     ),
                   ),
                   suffixIcon: Row(
@@ -86,11 +87,13 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
                         child: CustomIconButton(
                           onTap: () {},
                           icon: Icons.attach_file,
+                          iconColor: Coloors.greyDark,
                         ),
                       ),
                       CustomIconButton(
                         onTap: () {},
                         icon: Icons.camera_alt_outlined,
+                        iconColor: Coloors.greyDark,
                       ),
                     ],
                   )),
@@ -98,7 +101,7 @@ class _ChatTextFieldState extends ConsumerState<ChatTextField> {
           ),
           const SizedBox(width: 5),
           CustomIconButton(
-            onTap: sendTextMessage ,
+            onTap: sendTextMessage,
             icon: isMessageIconEnabled
                 ? Icons.send_outlined
                 : Icons.mic_none_outlined,
