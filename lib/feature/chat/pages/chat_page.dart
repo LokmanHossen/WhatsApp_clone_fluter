@@ -161,73 +161,100 @@ class ChatPage extends ConsumerWidget {
                                       snapshot.data![index - 1].senderId &&
                                   message.messageId !=
                                       snapshot.data![index + 1].senderId);
-                          return Container(
-                            alignment: isSender
-                                ? Alignment.centerRight
-                                : Alignment.centerLeft,
-                            margin: EdgeInsets.only(
-                              top: 4,
-                              bottom: 4,
-                              left: isSender
-                                  ? 80
-                                  : haveNip
-                                      ? 10
-                                      : 15,
-                              right: isSender
-                                  ? haveNip
-                                      ? 10
-                                      : 15
-                                  : 80,
-                            ),
-                            child: ClipPath(
-                              clipper: haveNip
-                                  ? UpperNipMessageClipperTwo(
-                                      isSender
-                                          ? MessageType.send
-                                          : MessageType.receive,
-                                      nipWidth: 8,
-                                      nipHeight: 10,
-                                      bubbleRadius: haveNip ? 12 : 0,
-                                    )
-                                  : null,
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                  top: 8,
-                                  bottom: 8,
-                                  left: isSender ? 10 : 15,
-                                  right: isSender ? 15 : 10,
-                                ),
-                                decoration: BoxDecoration(
-                                    color: isSender
-                                        ? context.theme.senderChatCardBg
-                                        : context.theme.receiverChatCardBg,
-                                    borderRadius: haveNip
-                                        ? null
-                                        : BorderRadius.circular(12),
-                                    boxShadow: const [
-                                      BoxShadow(color: Colors.black38),
-                                    ]),
-                                child: Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 5),
-                                      child: Text(
-                                        "${message.textMessage}             ",
-                                        style: const TextStyle(fontSize: 16),
-                                      ),
+                          return Column(
+                            children: [
+                              if (index == 0)
+                                Container(
+                                  margin: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                    horizontal: 30,
+                                  ),
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: context.theme.yellowCardBgColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Text(
+                                    'Message and calls are end-to-end encryption. No one outs of this chat, not even WhatsApp,can read or listen to them. Tap to learn more.',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: context.theme.yellowCardTextColor,
                                     ),
-                                    Positioned(
-                                        child: Text(
-                                      DateFormat.Hm().format(message.timeSent),
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: context.theme.greyColor,
-                                      ),
-                                    ))
-                                  ],
+                                  ),
+                                ),
+                              Container(
+                                alignment: isSender
+                                    ? Alignment.centerRight
+                                    : Alignment.centerLeft,
+                                margin: EdgeInsets.only(
+                                  top: 4,
+                                  bottom: 4,
+                                  left: isSender
+                                      ? 80
+                                      : haveNip
+                                          ? 10
+                                          : 15,
+                                  right: isSender
+                                      ? haveNip
+                                          ? 10
+                                          : 15
+                                      : 80,
+                                ),
+                                child: ClipPath(
+                                  clipper: haveNip
+                                      ? UpperNipMessageClipperTwo(
+                                          isSender
+                                              ? MessageType.send
+                                              : MessageType.receive,
+                                          nipWidth: 8,
+                                          nipHeight: 10,
+                                          bubbleRadius: haveNip ? 12 : 0,
+                                        )
+                                      : null,
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                      top: 8,
+                                      bottom: 8,
+                                      left: isSender ? 10 : 15,
+                                      right: isSender ? 15 : 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                        color: isSender
+                                            ? context.theme.senderChatCardBg
+                                            : context.theme.receiverChatCardBg,
+                                        borderRadius: haveNip
+                                            ? null
+                                            : BorderRadius.circular(12),
+                                        boxShadow: const [
+                                          BoxShadow(color: Colors.black38),
+                                        ]),
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(bottom: 5),
+                                          child: Text(
+                                            "${message.textMessage}             ",
+                                            style:
+                                                const TextStyle(fontSize: 16),
+                                          ),
+                                        ),
+                                        Positioned(
+                                            child: Text(
+                                          DateFormat.Hm()
+                                              .format(message.timeSent),
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: context.theme.greyColor,
+                                          ),
+                                        ))
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           );
                         });
                   },
