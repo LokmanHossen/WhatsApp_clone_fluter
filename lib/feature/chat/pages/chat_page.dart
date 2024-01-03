@@ -14,9 +14,11 @@ import 'package:intl/intl.dart';
 import '../../auth/controller/auth_controller.dart';
 
 class ChatPage extends ConsumerWidget {
-  const ChatPage({super.key, required this.user});
+  ChatPage({super.key, required this.user});
 
   final UserModel user;
+
+  final ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -142,6 +144,7 @@ class ChatPage extends ConsumerWidget {
                     }
                     return ListView.builder(
                         shrinkWrap: true,
+                        controller: scrollController,
                         itemCount:
                             snapshot.data == null ? 0 : snapshot.data!.length,
                         itemBuilder: (_, index) {
@@ -260,7 +263,9 @@ class ChatPage extends ConsumerWidget {
                   },
                 ),
               ),
-              ChatTextField(receiverId: user.uid)
+              ChatTextField(receiverId: user.uid,
+              scrollController: scrollController,
+              )
             ],
           )
         ],
