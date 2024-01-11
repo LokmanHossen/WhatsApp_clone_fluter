@@ -13,6 +13,7 @@ import 'package:whats_app_clone/feature/chat/controllers/chat_controller.dart';
 import 'package:whats_app_clone/feature/chat/widgets/chat_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:whats_app_clone/feature/chat/widgets/message_card.dart';
+import 'package:whats_app_clone/feature/chat/widgets/show_date_card.dart';
 import 'package:whats_app_clone/feature/chat/widgets/yellow_card.dart';
 import '../../auth/controller/auth_controller.dart';
 import 'package:shimmer/shimmer.dart';
@@ -179,8 +180,8 @@ class ChatPage extends ConsumerWidget {
                                   : context.theme.greyColor!.withOpacity(.3),
                               child: Container(
                                 height: 40,
-                                width: 170 +
-                                    double.parse((random * 2).toString()),
+                                width:
+                                    170 + double.parse((random * 2).toString()),
                                 color: Colors.red,
                               ),
                             ),
@@ -213,9 +214,20 @@ class ChatPage extends ConsumerWidget {
                                   snapshot.data![index - 1].senderId &&
                               message.messageId !=
                                   snapshot.data![index + 1].senderId);
+
+                      final isShowDateCard = (index == 0) ||
+                          ((index == snapshot.data!.length - 1) &&
+                              (message.timeSent.day >
+                                  snapshot.data![index - 1].timeSent.day)) ||
+                          (message.timeSent.day >
+                                  snapshot.data![index - 1].timeSent.day &&
+                              message.timeSent.day <=
+                                  snapshot.data![index + 1].timeSent.day);
                       return Column(
                         children: [
                           if (index == 0) const YellowCard(),
+                          if (isShowDateCard)
+                            ShowDateCard(date: message.timeSent),
                           MessageCard(
                             isSender: isSender,
                             haveNip: haveNip,
