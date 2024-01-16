@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:custom_clippers/custom_clippers.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:whats_app_clone/common/enum/message_type.dart' as myMessageType;
+import 'package:whats_app_clone/common/enum/message_type.dart' as my_type;
 import 'package:whats_app_clone/common/extension/custom_theme_extension.dart';
 import 'package:whats_app_clone/common/models/message_model.dart';
 
@@ -64,7 +64,7 @@ class MessageCard extends StatelessWidget {
                   ]),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 5),
-                child: message.type == myMessageType.MessageType.image
+                child: message.type == my_type.MessageType.image
                     ? Padding(
                         padding:
                             const EdgeInsets.only(right: 3, top: 3, left: 3),
@@ -91,13 +91,13 @@ class MessageCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: message.type == myMessageType.MessageType.text ? 8 : 4,
-              right: message.type == myMessageType.MessageType.text
+              bottom: message.type == my_type.MessageType.text ? 8 : 4,
+              right: message.type == my_type.MessageType.text
                   ? isSender
                       ? 15
                       : 10
                   : 4,
-              child: message.type == myMessageType.MessageType.text
+              child: message.type == my_type.MessageType.text
                   ? Text(
                       DateFormat.Hm().format(message.timeSent),
                       style: TextStyle(
